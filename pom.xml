@@ -1,0 +1,167 @@
+<!-- 
+ ! Copyright 2023 The open source project at https://github.com/saggcs/abebc
+ ! 
+ ! Licensed under the Apache License, Version 2.0 (the "License");
+ ! you may not use this file except in compliance with the License.
+ ! You may obtain a copy of the License at
+ ! 
+ !   https://www.apache.org/licenses/LICENSE-2.0
+ ! 
+ ! Unless required by applicable law or agreed to in writing, software
+ ! distributed under the License is distributed on an "AS IS" BASIS,
+ ! WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ! See the License for the specific language governing permissions and
+ ! limitations under the License.
+ -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.github.saggcs.wminst</groupId>
+  <artifactId>wm-installation-scripts</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>webMethods installation scripts</name>
+  <description>A collection of scripts, and other resources, for performing an automated installation of the webMethods suite.</description>
+  <properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  <url>https://github.com/saggcs/abebc</url>
+  <scm>
+	  <connection>scm:git:https://github.com/saggcs/abebc.git</connection>
+	  <developerConnection>scm:git:https://github.com/saggcs/abebc.git</developerConnection>
+	  <url>https://github.com/saggcs/abebc</url>
+      <tag>main</tag>
+  </scm>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <build>
+	<pluginManagement>
+	  <plugins>
+	    <plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-clean-plugin</artifactId>
+		  <version>3.2.0</version>
+		</plugin>
+		<plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-resources-plugin</artifactId>
+		  <version>3.3.0</version>
+		</plugin>
+		<plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-compiler-plugin</artifactId>
+		  <version>3.10.1</version>
+		</plugin>
+		<plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-jar-plugin</artifactId>
+		  <version>3.3.0</version>
+		</plugin>
+      </plugins> 
+	  </pluginManagement>
+	  <plugins>
+		<plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-source-plugin</artifactId>
+		  <version>3.2.1</version>
+		  <executions>
+		    <execution>
+			  <id>add-source-jar</id>
+			  <phase>package</phase>
+			  <goals><goal>jar-no-fork</goal></goals>
+			  <configuration>
+			    <attach>true</attach>
+			    <excludes>
+					<!-- No comments in MANIFEST files, see
+					     https://bugs.java.com/bugdatabase/view_bug.do?bug_id=4782054
+					-->
+					<exclude>**/MANIFEST.MF</exclude>
+				</excludes>
+			  </configuration>
+			</execution>
+		  </executions>
+		</plugin>
+	  </plugins>
+	  <defaultGoal>clean install</defaultGoal>
+  </build>
+  <reporting>
+	  <plugins>
+		<plugin>
+		  <groupId>org.apache.maven.plugins</groupId>
+		  <artifactId>maven-changes-plugin</artifactId>
+		  <version>2.12.1</version>
+		</plugin>
+	  </plugins>
+  </reporting>
+  <profiles>
+    <profile>
+      <id>oss-release</id>
+      <build>
+		<pluginManagement>
+		  <plugins>
+			<plugin>
+		      <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-release-plugin</artifactId>
+			  <version>3.0.0-M7</version>
+			  <configuration>
+				  <connectionUrl>scm:git:https://github.com/saggcs/abebc.git</connectionUrl>
+				  <releaseProfiles>oss-release</releaseProfiles>
+			  </configuration>
+			</plugin>
+		  </plugins>
+		</pluginManagement>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.6</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+                <phase>verify</phase>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+              <groupId>org.sonatype.plugins</groupId>
+              <artifactId>nexus-staging-maven-plugin</artifactId>
+              <version>1.6.13</version>
+              <extensions>true</extensions>
+              <configuration>
+                  <serverId>ossrh-saggcs</serverId>
+                  <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                  <autoReleaseAfterClose>true</autoReleaseAfterClose>
+              </configuration>
+           </plugin>
+        </plugins>
+      </build>
+      <distributionManagement>
+          <repository>
+              <id>ossrh</id>
+              <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+          </repository>
+          <snapshotRepository>
+              <id>ossrh</id>
+              <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+          </snapshotRepository>
+      </distributionManagement>
+    </profile>
+  </profiles>
+  <developers>
+	  <developer>
+		  <id>jwi</id>
+		  <email>jochen.wiedmann@softwareag.com</email>
+		  <name>Jochen Wiedmann</name>
+		  <organization>Software AG Consulting Services GmbH</organization>
+		  <organizationUrl>https://www.softwareag.com/de_de/resources/services/professional-services.html</organizationUrl>
+	  </developer>
+  </developers>
+</project>
