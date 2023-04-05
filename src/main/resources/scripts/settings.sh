@@ -31,7 +31,7 @@ LICENSE_FILE_TS="/tmp/wm-inst/ts-license.xml"
 
 # Empower user name, and password, for software download
 EMPOWER_USERID="jwi@softwareag.com"
-EMPOWER_PASSWORD="2/Mj0boBO0IcvwvJWs13K"
+EMPOWER_PASSWORD="ReplaceMeWithTheRealPassword"
 
 # User name of the "sag" user. IS, and UM will be running under this user id.
 ADMIN_USERID="sag"
