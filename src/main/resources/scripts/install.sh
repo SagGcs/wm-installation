@@ -126,7 +126,8 @@ ${java} -classpath . Replacer "${install_script}" "${install_script}".new \
  integrationServer.LicenseFile.text "url(__VERSION1__,${is_lic_file})" \
  HostName "localhost" \
  InstallDir "${inst_dir}" \
- DesignerLicense "url(__VERSION1__,${ts_lic_file})"
+ DesignerLicense "url(__VERSION1__,${ts_lic_file})" \
+ NUMRealmServer.LicenseFile.text "url(__VERSION1__,${um_lic_file})"
 mv "${install_script}.new" "${install_script}"
 
 
