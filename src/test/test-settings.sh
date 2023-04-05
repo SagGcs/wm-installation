@@ -1,0 +1,5 @@
+is_license_xml="/c/opt/wm/installation/is-license.xml"
+ts_license_xml="/c/opt/wm/installation/ts-license.xml"
+um_license_xml="/c/opt/wm/installation/um-license.xml"
+empower_user_id="jwi@softwareag.com"
+empower_password="2/Mj0boBO0IcvwvJWs13K"
