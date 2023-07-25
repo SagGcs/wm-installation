@@ -16,3 +16,7 @@ Basically, installation works like this:
 
 The procedure is carefully designed to work with a *Dockerfile*, when setting up a *WSL* instance, a virtual, or typical machine, as long as you are using Red Hat Enterprise Linux, CentOS, AlmaLinux, Rocky Linux, or any
 compatible operating system. (In the case of Docker, WSL, or a VM, that would be the guest operating system, not the hosts.)
+
+If you are interested in this project, if you nhave questions, or would like to have support, please contact [Jochen Wiedmann](mailto:jochen.wiedmann@softwareag.com). 
+
+That said, please be aware, that this project is by no means officially supported, or endorsed, by Software AG. It is created, and maintained, by volunteers, as an open source tool.
