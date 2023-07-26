@@ -53,7 +53,7 @@ for desktopFile in "${product_dir}"/*-desktop.sh "${product_dir}/${WEBMETHODS_VE
             fi
             
             # Actual creation of the .desktop file.
-            actual_desktop_file="/usr/local/share/applications/${}.desktop"
+            actual_desktop_file="/usr/local/share/applications/${desktopFileFileName}.desktop"
             temp_desktop_file="${wm_inst_dir}/${desktopFileName}-${WEBMETHODS_PRODUCT}-${WEBMETHODS_VERSION}"
             if test -f "${actual_desktop_file}"; then
                 echo "Skipping creation of desktop file ${df}, because it already exists at ${actual_desktop_file}."
