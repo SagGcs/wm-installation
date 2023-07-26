@@ -114,3 +114,5 @@ image_archive_new="${image_archive}.new"
 # Step 9: Run the SAG Installer to perform the actual installation.
 . ./steps/runInstallation.sh
           
+# Step 10: Create the .desktop files
+. ./steps/createDesktopFiles.sh

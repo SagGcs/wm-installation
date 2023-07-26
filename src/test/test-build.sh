@@ -14,4 +14,8 @@ else
     exit 1
 fi
 
-docker build --progress=plain ./docker
+if test -z "$DOCKER"; then
+    DOCKER=docker
+fi
+
+"$DOCKER" build --progress=plain ./docker
