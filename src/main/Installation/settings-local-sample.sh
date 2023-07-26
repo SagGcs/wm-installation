@@ -1,15 +1,15 @@
 # Example of a local-settings.sh file:
 
 # webMethods product, which is being installed. Identifies a subdirectory of
-# "products". As of this writing, valid products are "wmSuite" (default),
+# "products". As of this writing, valid products are "isDevEdition" (default),
 # and Tamino
-WEBMETHODS_PRODUCT=wmSuite
+WEBMETHODS_PRODUCT=isDevEdition
 # webMethods version, which is being installed. As of this writing, supported versions are 10.5, 10.7,
 # 10.11, and 10.15
 WEBMETHODS_VERSION=10.5
 
 # License file locations; required license files depend on the product.
-# Product wmSuite requires IS (Integration Server), UM (Universal Messaging), and TS (webMethods test suite)
+# Product isDevEdition requires IS (Integration Server), UM (Universal Messaging), and TS (webMethods test suite)
 # Product webMethods suite requires IS (Integration Server),
 # UM (Universal Messaging), and TS (Test suite)
 LICENSE_FILE_IS="/mnt/c/opt/wm/installation/installation/is-license.xml"
